@@ -31,6 +31,7 @@ export default class Login extends React.Component {
   };
 
   login() {
+    this.props.navigation.navigate("Home");
     let data = {
       method: "POST",
       body: JSON.stringify({
@@ -125,16 +126,13 @@ export default class Login extends React.Component {
                 </Text>
               </Button>
               <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between"
-                }}
+                style={styles.textContainer}
               >
                 <Text
                   onPress={() => {
                     navigate("Signup");
                   }}
-                  style={{ color: "white", marginTop: 15, marginLeft: 10 }}
+                  style={styles.text}
                 >
                   Create Account
                 </Text>
@@ -142,7 +140,7 @@ export default class Login extends React.Component {
                   onPress={() => {
                     alert("Forgot Password");
                   }}
-                  style={{ color: "white", marginTop: 15, marginRight: 10 }}
+                  style={styles.text}
                 >
                   Forgot Password
                 </Text>
@@ -157,28 +155,37 @@ export default class Login extends React.Component {
 
 const styles = StyleSheet.create({
   backgroundImage: {
-    width: windowWidth,
-    height: windowHeight,
-    opacity: 0.9
+    width: windowWidth, //fill entire window
+    height: windowHeight, //fill entire window
+    opacity: 0.9 // make it abit see through
   },
-  container: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
-    margin: 10
+  container: { // Container for most of the content
+    flex: 1, // makes the container flexable
+    flexDirection: "column", // all child elements should be under eachother
+    justifyContent: "center", // all child elements should be centered
+    margin: 10 // abit of margin to get child elements away from the edge of the screen
   },
   inputfields: {
     marginBottom: 25,
-    backgroundColor: "rgba(255, 255, 255, .9)"
+    backgroundColor: "rgba(255, 255, 255, .9)" // color of the input with 0.9 as opacity
   },
   inputIcon: {
-    color: "rgba(0, 0, 0, .7)"
+    color: "rgba(0, 0, 0, .7)" // color of the input icon with 0.9 as opacity
   },
   companyLogo: {
-    width: windowWidth / 1.1,
-    height: windowHeight / 4,
+    width: windowWidth / 1.1, // width determined by the window width
+    height: windowHeight / 4, // height determined by the window height
     alignSelf: "center",
     resizeMode: "contain",
     opacity: 0.9
+  },
+  textContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  text: {
+    color: "white",
+    marginTop: 15, 
+    marginRight: 10
   }
 });
